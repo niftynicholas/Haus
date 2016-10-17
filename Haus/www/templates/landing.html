@@ -1,0 +1,85 @@
+<style>
+  .login-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    height: 100%;
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #bfede4));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #bfede4 100%);*/
+    background: url('../img/bg.jpg') center;
+    background-size: auto 100%;
+  }
+
+  .login-container>.button-row img {
+    max-width: 80%;
+  }
+
+  .login-container>.header {
+    -webkit-flex: 4;
+    padding-top: 20px;
+  }
+
+  .logo {
+    max-height: 60%;
+    max-width: 60%;
+    border-radius: 999px;
+    width: auto;
+  }
+
+  .welcome-view {
+    background-color: #00b6d6;
+  }
+
+  .welcome-view .top-content {
+    height: 66%;
+  }
+
+  .welcome-view .top-content .app-copy {
+    text-align: center;
+    padding-top: 13vh;
+  }
+
+  .welcome-view .top-content .app-logo {
+    font-size: 60px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: #FFF;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+  }
+
+  .welcome-view .top-content .app-tagline {
+    font-size: 16px;
+    margin-top: 0px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .welcome-view .bottom-content {
+    height: 34%;
+  }
+
+  .welcome-view .bottom-content .google-sign-in {
+    border-radius: 4px;
+    font-weight: 500;
+    color: #FFF;
+    background-color: #dd4c39;
+    border-color: #dc4430;
+  }
+</style>
+<ion-view class="welcome-view">
+  <ion-content scroll="false">
+    <section class="login-container">
+      <div class="col header text-center">
+        <img src="img/Haus.png" class="logo" />
+      </div>
+      <div class="bottom-content row">
+        <div class="col col-bottom">
+          <button class="button button-full button-stable" ui-sref="login">
+            Existing Users
+          </button>
+          <button class="button button-full button-stable">
+            Join Now
+          </button>
+        </div>
+      </div>
+  </ion-content>

@@ -1,0 +1,105 @@
+<ion-header-bar class="bar-stable">
+  <div class="buttons">
+    <button class="button button-clear" ng-click="goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+  </div>
+  <h1 class="title">Set Up</h1>
+</ion-header-bar>
+<ion-content>
+  <form ng-submit="submit()">
+    <div class="list">
+      <!-- Start of List-->
+
+      <div class="item item-divider">
+        Is this a single or joint purchase?
+      </div>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Purchase Type
+        </div>
+        <select ng-model="data.type">
+          <option value="single">Single</option>
+          <option value="joint">Joint</option>
+        </select>
+      </label>
+
+      <div id="joint" ng-if='data.type === "joint"'>
+        <div class="item item-divider">
+          What are your joint applicant's details?
+        </div>
+        <label class="item item-input">
+          <span class="input-label">Age</span>
+          <input min="21" type="number" ng-model="data.age">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Residency
+          </div>
+          <select ng-model="data.residency">
+            <option value="foreigner">Foreigner</option>
+            <option value="spore">Singaporean</option>
+            <option value="pr">Permanent Resident</option>
+          </select>
+        </label>
+      </div>
+
+      <div ng-if='data.type === "single"' class="item item-divider">
+        What is your gross income?
+      </div>
+      <div ng-if='data.type === "joint"' class="item item-divider">
+        What are your gross income?
+      </div>
+      <label class="item item-input">
+        <span class="input-label">Monthly Fixed Income</span>
+        <input min="0" type="number" value="0">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Annual Income</span>
+        <input min="0" type="number" value="0">
+      </label>
+
+      <div class="item item-divider">
+        Do you have any available funds?
+      </div>
+      <label class="item item-input">
+        <span class="input-label">CPF Funds</span>
+        <input min="0" type="number" value="0">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Cash</span>
+        <input min="0" type="number" value="0">
+      </label>
+
+      <div class="item item-divider">
+        What are your month debt obligations?
+      </div>
+      <label class="item item-input">
+        <span class="input-label">Debt</span>
+        <input min="0" type="number" value="0">
+      </label>
+
+      <div class="item item-divider">
+        What property type are you interested in?
+      </div>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Property Type
+        </div>
+        <select ng-model="data.property">
+          <option value="hdb">HDB</option>
+          <option value="ec">Executive Condominium</option>
+          <option value="pri">Private</option>
+        </select>
+      </label>
+
+      <div class="item item-divider">
+        Desired loan tenure? <span class="badge badge-positive">{{data.term}}</span>
+      </div>
+      <div class="item range">
+        5
+        <input ng-model="data.term" type="range" min="0" max="35" value="20"> 35
+      </div>
+    </div>
+    <!-- End of List-->
+    <button class="button button-full button-positive" ui-sref="report">Confirm</button>
+  </form>
+</ion-content>
