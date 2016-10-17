@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $state) {
     $scope.logout = function() {
-        $state.go('login');
+        $state.go('landing');
     }
 })
 
@@ -30,6 +30,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('reportCtrl', function($scope, $state, $ionicHistory) {
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    }
+})
+
+.controller('scheduleApptCtrl', function($scope, $state, $ionicHistory) {
     $scope.goBack = function() {
         $ionicHistory.goBack();
     }

@@ -81,6 +81,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         templateUrl: 'templates/browseProperties.html'
       }
     }
+  })
+
+  .state('app.scheduleAppt', {
+    url: '/scheduleAppt',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/scheduleAppt.html',
+        controller: 'scheduleApptCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landing');
