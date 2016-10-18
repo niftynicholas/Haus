@@ -1,7 +1,7 @@
 {
   "name": "haus",
   "version": "1.1.1",
-  "description": "Haus: An Ionic project",
+  "description": "Haus: Your One Stop to Loans and Properties.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
