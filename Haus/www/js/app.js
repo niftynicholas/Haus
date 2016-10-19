@@ -163,7 +163,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 // })
 
 .service('userDAO', function($http, Backand) {
-  //https://api.backand.com:443/1/objects/users?returnObject=false&deep=false
   var service = {};
   var baseUrl = '/1/objects/',
     objectName = 'users/';
@@ -198,8 +197,42 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   return service;
 })
 
+.service('appointmentDAO', function($http, Backand) {
+  var service = {};
+  var baseUrl = '/1/objects/',
+    objectName = 'appointments/';
+
+  function getUrl() {
+    return Backand.getApiUrl() + baseUrl + objectName;
+  }
+
+  function getUrlForId(id) {
+    return getUrl() + id;
+  }
+
+  service.getAppointments = function() {
+    return $http.get(getUrl());
+  };
+
+  service.getAppointment = function(id) {
+    return $http.get(getUrlForId(id));
+  };
+
+  service.addAppointment = function(object) {
+    return $http.post(getUrl(), object);
+  };
+
+  service.updateAppointment = function(id, object) {
+    return $http.put(getUrlForId(id), object);
+  };
+
+  service.deleteAppointment = function(id) {
+    return $http.delete(getUrlForId(id));
+  };
+  return service;
+})
+
 .service('branchDAO', function($http, Backand) {
-  //https://api.backand.com:443/1/objects/users?returnObject=false&deep=false
   var service = {};
   var baseUrl = '/1/objects/',
     objectName = 'bankbranches/';
@@ -221,7 +254,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   };
 
   service.addBranch = function(object) {
-    console.log(object);
     return $http.post(getUrl(), object);
   };
 
@@ -258,7 +290,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   };
 
   service.addBank = function(object) {
-    console.log(object);
     return $http.post(getUrl(), object);
   };
 
