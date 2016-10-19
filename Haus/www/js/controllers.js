@@ -26,6 +26,12 @@ angular.module('starter.controllers', [])
   $scope.goBack = function() {
     $ionicHistory.goBack();
   }
+
+  $scope.signup = function(form) {
+      if (form.$valid) {
+          console.log('CONFIRM LOG ONE LA');
+      }
+  }
 })
 
 .controller('profileCtrl', function($scope, $state) {
