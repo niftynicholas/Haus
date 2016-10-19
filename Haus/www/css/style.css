@@ -1,3 +1,38 @@
+.error-container {
+    margin: 5px 0;
+}
+
+.error-container:last-child {
+    margin: 5px 0 0;
+}
+
+.error {
+    padding: 0px 0px 0px 18px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    vertical-align: middle;
+    background-color: #96281B;
+}
+
+.error i {
+    font-size: 12px;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+.last-error-container>.error {
+    padding: 10px 16px 0;
+}
+
+.has-errors {
+    border-bottom: 3px solid #96281B;
+}
+
+.no-errors {
+    border-bottom: 3px solid #019875;
+}
+
 .profile-item {
   text-align: center;
 }
