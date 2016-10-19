@@ -1,0 +1,89 @@
+<ion-header-bar class="bar-positive">
+  <div class="buttons">
+    <button class="button button-clear" ng-click="goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+  </div>
+  <h1 class="title">Sign Up</h1>
+</ion-header-bar>
+<ion-content padding="true" class="has-header">
+  <form name="signupForm" novalidate="" ng-submit="signup(signupForm)">
+    <div class="list">
+      <!-- Email -->
+      <label class="item item-input" ng-class="{ 'has-errors' : signupForm.email.$invalid && signupForm.$submitted, 'no-errors' : signupForm.email.$valid  && signupForm.$submitted}">
+                    <span class="input-label">Email</span>
+                    <input type="email" name="email" ng-model="input.email" required record-availability-validator="https://sgcycling-sgloop.rhcloud.com/api/cyclist/account/checkEmailAvailability">
+                </label>
+      <div class="error-container" ng-show="signupForm.email.$error && signupForm.$submitted" ng-messages="signupForm.email.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+      <!-- Name -->
+      <label class="item item-input" ng-class="{ 'has-errors' : signupForm.name.$invalid && signupForm.$submitted, 'no-errors' : signupForm.name.$valid  && signupForm.$submitted}">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="name" ng-model="input.name" required>
+                </label>
+      <div class="error-container" ng-show="signupForm.name.$error && signupForm.$submitted" ng-messages="signupForm.name.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+      <!-- NRIC -->
+      <label class="item item-input" ng-class="{ 'has-errors' : signupForm.name.$invalid && signupForm.$submitted, 'no-errors' : signupForm.name.$valid  && signupForm.$submitted}">
+                    <span class="input-label">NRIC</span>
+                    <input type="text" name="name" ng-model="input.name" required>
+                </label>
+      <div class="error-container" ng-show="signupForm.name.$error && signupForm.$submitted" ng-messages="signupForm.name.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+      <!-- Birth Date -->
+      <label class="item item-input" ng-class="{ 'has-errors' : signupForm.birthDate.$invalid && signupForm.$submitted, 'no-errors' : signupForm.birthDate.$valid  && signupForm.$submitted}">
+                    <span class="input-label">Birth Date</span>
+                    <input type="date" name="birthDate" ng-model="input.birthDate" required>
+                </label>
+      <div class="error-container" ng-show="signupForm.birthDate.$error && signupForm.$submitted" ng-messages="signupForm.birthDate.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+
+      <!-- Username -->
+      <label class="item item-input" ng-class="{ 'has-errors' : signupForm.username.$invalid && signupForm.$submitted, 'no-errors' : signupForm.username.$valid  && signupForm.$submitted}">
+                    <span class="input-label">Username</span>
+                    <input type="text" name="username" ng-model="input.username" ng-minlength="8" ng-maxlength="15" required record-availability-validator="https://sgcycling-sgloop.rhcloud.com/api/cyclist/account/checkUsernameAvailability">
+                </label>
+      <div class="error-container" ng-show="signupForm.username.$error && signupForm.$submitted" ng-messages="signupForm.username.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+      <!-- Password -->
+      <label class="item item-input item-icon-right" ng-class="{ 'has-errors' : signupForm.password.$invalid && signupForm.$submitted, 'no-errors' : signupForm.password.$valid  && signupForm.$submitted}">
+                    <span class="input-label">Password</span><i class="icon ion-eye" on-touch="toggleVisibility()"></i>
+                    <input type="{{type}}" name="password" id="password" ng-model="input.password" required password-strength>
+                </label>
+      <div class="error-container" ng-show="signupForm.password.$error && signupForm.$submitted" ng-messages="signupForm.password.$error">
+        <div ng-messages-include="error-list.html"></div>
+      </div>
+    </div>
+    <button type="submit" class="button button-positive button-full">Sign Up</button>
+  </form>
+</ion-content>
+
+<script id="error-list.html" type="text/ng-template">
+  <div class="error" ng-message="email">
+    <i class="ion-information-circled"></i> Invalid Email
+  </div>
+  <div class="error" ng-message="required">
+    <i class="ion-information-circled"></i> Required Field
+  </div>
+  <div class="error" ng-message="minlength">
+    <i class="ion-information-circled"></i> Usernames must be between 8 and 15 characters
+  </div>
+  <div class="error" ng-message="maxlength">
+    <i class="ion-information-circled"></i> Usernames must be between 8 and 15 characters
+  </div>
+  <div class="error" ng-message="recordLoading">
+    <i class="ion-information-circled"></i> Checking...
+  </div>
+  <div class="error" ng-message="checking">
+    <i class="ion-information-circled"></i> Checking...
+  </div>
+  <div class="error" ng-message="recordAvailable">
+    <i class="ion-information-circled"></i> Unavailable
+  </div>
+  <div class="error" ng-message="strong">
+    <i class="ion-information-circled"></i> Passwords must have at least 8 characters and contain ALL of the following: uppercase letters, lowercase letters, and numbers.
+  </div>
+</script>

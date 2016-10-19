@@ -2,7 +2,7 @@
   <ion-content>
       <h5 style="padding:8px; text-align:center;"><b>Schedule a face-to-face appointment to speak with a banker from one of our participating banks to finalize your loan.</b></h5>
     <div class="list list-inset">
-      <a class="item item-icon-left item-icon-right">
+      <a class="item item-icon-left item-icon-right" ng-click="openBankModal()">
         <i class="icon ion-social-usd"></i>
         <h2>Bank</h2>
         <p>DBS</p>
@@ -30,3 +30,14 @@
         <button class="button button-full button-positive" ui-sref="">Confirm</button>
   </ion-content>
 </ion-view>
+
+<script id="bankModal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Select Bank</h1>
+    </ion-header-bar>
+    <ion-content>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
