@@ -67,6 +67,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
     }
   })
 
+  .state('myAppts', {
+    url: '/myAppts',
+    templateUrl: 'templates/myAppts.html',
+    controller: 'myApptsCtrl'
+  })
+
   .state('setup', {
     url: '/setup',
     templateUrl: 'templates/setup.html',
@@ -108,6 +114,43 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/landing');
+})
+
+.directive('passwordStrength', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            // regex
+            // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+            var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+            // var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
+            function setAsChecking(bool) {
+                ngModel.$setValidity('checking', !bool);
+            }
+
+            function setAsStrong(bool) {
+                ngModel.$setValidity('strong', bool);
+            }
+
+            ngModel.$parsers.push(function(value) {
+                if (!value || value.length == 0) return;
+
+                setAsChecking(true);
+                setAsStrong(false);
+
+                if (strongRegex.test(value)) {
+                    setAsChecking(false);
+                    setAsStrong(true);
+                } else {
+                    setAsChecking(false);
+                    setAsStrong(false);
+                }
+
+                return value;
+            })
+        }
+    }
 })
 
 //Manage items object in /www/js/services.js
