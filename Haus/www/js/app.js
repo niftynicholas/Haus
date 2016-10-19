@@ -45,12 +45,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
   .state('login', {
     url: '/login',
+    cache: 'false',
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
 
   .state('signup', {
     url: '/signup',
+    cache: 'false',
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl'
   })

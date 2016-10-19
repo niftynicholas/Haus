@@ -6,51 +6,56 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('loginCtrl', function($scope, $state) {
-  $scope.login = function() {
-    $state.go('app.profile');
-  }
+.controller('loginCtrl', function($scope, $state, userDAO) {
+    $scope.authorization = {};
+    $scope.login = function() {
+        var promise = userDAO.getUsers();
+        promise.then(function successCallback(response) {
+            var authenticated = false;
+            var users = response.data.data;
+            for(var i=0;i<users.length;i++){
+                if(users[i].username==$scope.authorization.username && users[i].password==$scope.authorization.password){
+                    $state.go('app.profile');
+                    authenticated = true;
+                }
+            }
+            if(!authenticated){
+                console.log("incorrect username/password");
+            }
+        }, function errorCallback(response) {
+            //if duplicate email/username
+            console.log(response);
+        });
+    }
 })
 
-.controller('signupCtrl', function($scope, $state, $ionicHistory) {
-  $scope.input = {
-    gender: "Male"
-  };
-
-  $scope.type = "password";
-
-  $scope.toggleVisibility = function() {
-    if ($scope.type == "password") {
-      $scope.type = "text";
-    } else if ($scope.type == "text") {
-      $scope.type = "password";
+.controller('signupCtrl', function($scope, $state, $ionicHistory, userDAO) {
+    $scope.type = "password";
+    $scope.input = {gender:"Male"};
+    $scope.toggleVisibility = function() {
+        if ($scope.type == "password") {
+            $scope.type = "text";
+        } else if ($scope.type == "text") {
+            $scope.type = "password";
+        }
     }
-  }
 
-  $scope.goBack = function() {
-    $ionicHistory.goBack();
-  }
-
-  $scope.signup = function(form) {
-    console.log(form);
-    console.log(form.email.$viewValue);
-    console.log(form.email.$viewValue);
-    console.log(form.email.$viewValue);
-    console.log(form.email.$viewValue);
-    console.log(form.email.$viewValue);
-
-    if (form.$valid) {
-      var dataSent = {
-        firstname: localStorage.getItem("CustID"), //add session
-        lastname: $scope.input.BankID,
-        gender: $scope.input.CardName,
-        mobileno: $scope.input.CardID,
-        email: 0,
-        password: ""
-      };
-      userDAO.addUser(dataSent);
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
     }
-  }
+
+    $scope.signup = function(form) {
+        if (form.$valid) {
+            var promise = userDAO.addUser($scope.input);
+            promise.then(function successCallback(response) {
+                console.log(response);
+            }, function errorCallback(response) {
+                //if duplicate email/username
+                console.log(response);
+            });
+        }
+    }
+
 })
 
 .controller('profileCtrl', function($scope, $state) {
