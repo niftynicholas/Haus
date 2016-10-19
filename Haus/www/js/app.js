@@ -106,7 +106,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand'])
     });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/landing');
-});
+})
 
 //Manage items object in /www/js/services.js
 // .service('ItemsModel', function ($http, Backand) {
@@ -164,4 +164,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand'])
     //     });
     // }
     return service;
-})
+});
