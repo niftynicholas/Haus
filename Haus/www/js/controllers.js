@@ -105,12 +105,21 @@ angular.module('starter.controllers', [])
 
     $scope.banks = [];
     $scope.branches = [];
-    $scope.selectedBranch = "Please select a bank";
 
+    $scope.selectedBank = "Please select a bank";
+    $scope.selectedBranch = "";
+
+    $scope.hasSelectedBank = function(){
+        if($scope.selectedBank == "Please select a bank"){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
     var promise = bankDAO.getBanks();
     promise.then(function successCallback(response) {
         $scope.banks = response.data.data;
-        $scope.selectedBank = $scope.banks[0].bankname;
     }, function errorCallback(response) {
         console.log(response);
     });
@@ -145,7 +154,6 @@ angular.module('starter.controllers', [])
         }, function errorCallback(response) {
             console.log(response);
         });
-
     }
 
     $ionicModal.fromTemplateUrl('branchModal.html', {

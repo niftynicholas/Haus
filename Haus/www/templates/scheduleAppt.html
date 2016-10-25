@@ -8,7 +8,7 @@
         <p>{{selectedBank}}</p>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
-      <a class="item item-icon-left item-icon-right" ng-click="openBranchModal()">
+      <a class="item item-icon-left item-icon-right" ng-click="openBranchModal()" ng-if="hasSelectedBank()">
         <i class="icon ion-ios-navigate-outline"></i>
         <h2>Branch</h2>
         <p>{{selectedBranch}}</p>
