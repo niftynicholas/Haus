@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   })
 
   .state('setup', {
-      cache: 'false',
+    cache: 'false',
     url: '/setup',
     templateUrl: 'templates/setup.html',
     controller: 'setupCtrl'
@@ -96,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   })
 
   .state('report', {
-      cache: 'false',
+    cache: 'false',
     url: '/report',
     templateUrl: 'templates/report.html',
     controller: 'reportCtrl'
@@ -120,6 +120,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
     }
   })
 
+  .state('viewProperty', {
+    cache: 'false',
+    url: '/viewProperty',
+    templateUrl: 'templates/viewProperty.html',
+    controller: 'viewPropertyCtrl'
+  })
+
   .state('app.scheduleAppt', {
     url: '/scheduleAppt',
     views: {
@@ -134,40 +141,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 })
 
 .directive('passwordStrength', function() {
-    return {
-        require: 'ngModel',
-        link: function(scope, element, attrs, ngModel) {
-            // regex
-            // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-            var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
-            // var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      // regex
+      // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+      var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
+      // var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
-            function setAsChecking(bool) {
-                ngModel.$setValidity('checking', !bool);
-            }
+      function setAsChecking(bool) {
+        ngModel.$setValidity('checking', !bool);
+      }
 
-            function setAsStrong(bool) {
-                ngModel.$setValidity('strong', bool);
-            }
+      function setAsStrong(bool) {
+        ngModel.$setValidity('strong', bool);
+      }
 
-            ngModel.$parsers.push(function(value) {
-                if (!value || value.length == 0) return;
+      ngModel.$parsers.push(function(value) {
+        if (!value || value.length == 0) return;
 
-                setAsChecking(true);
-                setAsStrong(false);
+        setAsChecking(true);
+        setAsStrong(false);
 
-                if (strongRegex.test(value)) {
-                    setAsChecking(false);
-                    setAsStrong(true);
-                } else {
-                    setAsChecking(false);
-                    setAsStrong(false);
-                }
-
-                return value;
-            })
+        if (strongRegex.test(value)) {
+          setAsChecking(false);
+          setAsStrong(true);
+        } else {
+          setAsChecking(false);
+          setAsStrong(false);
         }
+
+        return value;
+      })
     }
+  }
 })
 
 //Manage items object in /www/js/services.js
@@ -333,16 +340,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 })
 
 .factory('dataShare', function() {
-    var service = {};
-    service.data = false;
-    service.sendData = function(data) {
-        this.data = data;
-    };
-    service.getData = function() {
-        return this.data;
-    };
-    service.clearData = function() {
-        this.data = false;
-    };
-    return service;
+  var service = {};
+  service.data = false;
+  service.sendData = function(data) {
+    this.data = data;
+  };
+  service.getData = function() {
+    return this.data;
+  };
+  service.clearData = function() {
+    this.data = false;
+  };
+  return service;
 });

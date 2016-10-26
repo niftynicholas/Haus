@@ -1,42 +1,34 @@
 .error-container {
-    margin: 5px 0;
+  margin: 5px 0;
 }
-
 .error-container:last-child {
-    margin: 5px 0 0;
+  margin: 5px 0 0;
 }
-
 .error {
-    padding: 0px 0px 0px 18px;
-    font-family: "Calibri Black", Gadget, sans-serif;
-    font-size: 11px;
-    color: #ffffff;
-    vertical-align: middle;
-    background-color: #96281B;
+  padding: 0px 0px 0px 18px;
+  font-family: "Calibri Black", Gadget, sans-serif;
+  font-size: 11px;
+  color: #ffffff;
+  vertical-align: middle;
+  background-color: #96281B;
 }
-
 .error i {
-    font-size: 12px;
-    color: #ffffff;
-    vertical-align: middle;
+  font-size: 12px;
+  color: #ffffff;
+  vertical-align: middle;
 }
-
 .last-error-container>.error {
-    padding: 10px 16px 0;
+  padding: 10px 16px 0;
 }
-
 .has-errors {
-    border-bottom: 3px solid #96281B;
+  border-bottom: 3px solid #96281B;
 }
-
 .no-errors {
-    border-bottom: 3px solid #019875;
+  border-bottom: 3px solid #019875;
 }
-
 .profile-item {
   text-align: center;
 }
-
 .profile-picture {
   border: 1px solid rgba(0, 0, 0, 0.25);
   padding: 3px;
@@ -49,15 +41,41 @@
   height: 128px;
   overflow: hidden;
 }
-
 .profile-picture img {
   width: 128px;
   border-radius: 100%;
 }
-
 .profile-name {
   padding-top: 20px;
   font-size: x-large !important;
   font-weight: bold !important;
   text-transform: capitalize;
+}
+.image-list-thumb {
+  padding: 2px 2px 2px 2px;
+  height: 100px;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.transparent {
+  background: transparent !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+.slider {
+  width: 100%;
+  height: 100%;
 }

@@ -1,0 +1,66 @@
+<ion-header-bar class="bar-positive">
+  <div class="buttons">
+    <button class="button button-clear" ng-click="goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+  </div>
+  <h1 class="title">View Property</h1>
+</ion-header-bar>
+<ion-content padding="false">
+  <img width="100%" src="./img/property1.jpg">
+  <div class="list">
+    <div class="item item-divider">
+      Property Details
+    </div>
+    <a class="item">
+      <b>Price:</b> $355,000
+    </a>
+    <a class="item">
+      <b>Size:</b> 968 sqft
+    </a>
+    <a class="item">
+      <b>PSF:</b> $366.74 psf
+    </a>
+    <a class="item">
+      <b>Tenure:</b> 99-year Leasehold
+    </a>
+    <a class="item">
+      <b>Developer:</b> Housing & Development Board
+    </a>
+    <div class="item item-divider">
+      <i class="ion-images"></i> Photos from Social Media
+    </div>
+    <a class="item item-list-detail">
+      <ion-scroll scroll-bar='false' direction="x">
+        <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="showImages($index)" class="image-list-thumb" />
+      </ion-scroll>
+    </a>
+    <div class="item item-divider">
+               Notes
+           </div>
+           <div class="list">
+               <!-- If there is no comment -->
+               <a class="item" href="#" ng-if="route.comments == null">There are no comments yet.</a>
+
+               <!--<a class="item" href="#" ng-repeat="c in route.comments">-->
+               <a class="item item-avatar" href="#" ng-repeat="c in route.comments">
+                   <img src="{{profilePictures[c.uid] || 'img/profile-placeholder.gif'}}">
+                   <h2><b>{{c.username === username && "Me" || c.username}}</b></h2>
+                   <p style="overflow: initial; white-space: initial;">{{c.comment}}
+                       <br>
+                       <div ng-if='c.username === username && "Me"' style="text-align: right;">
+                           <!--<p ng-click="editComment(route.cid, c.datetimestamp)" style="display: inline;"><u>Edit</u></p>-->
+                           <p ng-click="deleteComment(route.cid, c.datetimestamp, c.comment)" style="display: inline;"><u>Delete</u></p>
+                       </div>
+                   </p>
+               </a>
+               <form>
+                   <div class="item item-input-inset">
+                       <label class="item-input-wrapper">
+                           <input type="text" placeholder="Write something..." ng-model="input.comment">
+                       </label>
+                       <button class="button button-small button-positive" type="submit" ng-click="postComment()">
+                           Write
+                       </button>
+                   </div>
+               </form>
+           </div>
+</ion-content>
