@@ -75,6 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   })
 
   .state('setup', {
+      cache: 'false',
     url: '/setup',
     templateUrl: 'templates/setup.html',
     controller: 'setupCtrl'
@@ -95,6 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   })
 
   .state('report', {
+      cache: 'false',
     url: '/report',
     templateUrl: 'templates/report.html',
     controller: 'reportCtrl'

@@ -81,17 +81,30 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('setupCtrl', function($scope, $state, $ionicHistory) {
-  $scope.data = {
+.controller('setupCtrl', function($scope, $state, $ionicHistory, dataShare) {
+  $scope.input = {
     type: "single",
     age: 21,
     residency: "spore",
     property: "hdb",
-    term: 20
+    term: 20,
+    monthlyIncome: 0,
+    cpfFunds: 0,
+    cash: 0,
+    totalDebt: 0
   };
+
   $scope.goBack = function() {
     $ionicHistory.goBack();
   }
+
+  $scope.confirm = function() {
+      $scope.tdsr = ($scope.input.monthlyIncome * 0.6 - $scope.input.totalDebt) * ($scope.input.term * 12) * 0.8 + $scope.input.cpfFunds + $scope.input.cash;
+      //alert($scope.tdsr);
+      dataShare.sendData($scope.tdsr);
+      $state.go("report");
+  }
+
 })
 
 .controller('proofCtrl', function($scope, $state, $ionicHistory, $window, $cordovaCamera, $cordovaFile, $ionicActionSheet, $cordovaImagePicker, $jrCrop, $ionicPlatform) {
@@ -541,10 +554,12 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('reportCtrl', function($scope, $state, $ionicHistory) {
+.controller('reportCtrl', function($scope, $state, $ionicHistory, dataShare) {
   $scope.goBack = function() {
     $ionicHistory.goBack();
   }
+
+  $scope.tdsr = dataShare.getData();
 })
 
 .controller('scheduleApptCtrl', function($scope, $ionicPopup, $state, $ionicHistory, $ionicModal, bankDAO, branchDAO) {
