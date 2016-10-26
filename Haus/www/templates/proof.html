@@ -1,0 +1,21 @@
+<ion-header-bar class="bar-positive">
+  <div class="buttons">
+    <button class="button button-clear" ng-click="goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+  </div>
+  <h1 class="title">Proof of Identity</h1>
+  <div class="buttons">
+    <button class="button button-clear" ui-sref="proof1">Next <i class="ion-arrow-right-c"></i> </button>
+  </div>
+</ion-header-bar>
+<ion-content align="center">
+    <h5 style="text-align:center;">
+        <b>To proof your identity, please upload the FRONT of your identification card.</b>
+    </h5>
+    <div id="profilephoto" class="cropped-photo">
+        <img width="360px" height="227px" src="./img/icfront.png">
+    </div>
+
+    <button class="button button-full button-positive" ng-click="show()">
+      Upload Front
+    </button>
+</ion-content>

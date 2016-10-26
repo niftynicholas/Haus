@@ -1,11 +1,11 @@
-<ion-view view-title="Profile">
+<ion-view view-title="Profile" hide-back-button="true">
   <ion-content padding="true">
     <ion-list>
       <ion-item class="profile-item">
         <div class="profile-picture big-profile-picture">
-          <img src="https://www.researchheroes.com/images/placeholder--user.png">
+          <img src="http://www.exaholics.com/wp-content/uploads/avatars/1404/avatar1404-bpthumb.jpg">
         </div>
-        <h2 class="profile-name dark">John Smith</h2>
+        <h2 class="profile-name dark">{{username}}</h2>
         <div class="profile-info">Affordability: $388,888</div>
       </ion-item>
     </ion-list>
@@ -20,7 +20,7 @@
     <button class="button button-block button-positive" ui-sref="setup">
       Set Up
     </button>
-    <button class="button button-block button-positive">
+    <button class="button button-block button-positive" ui-sref="proof">
       Upload Proof of Identity
     </button>
   </ion-content>
