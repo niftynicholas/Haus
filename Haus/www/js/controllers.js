@@ -596,14 +596,12 @@ angular.module('starter.controllers', [])
     $scope.modal.remove()
   };
 
+  $scope.input = {};
+  $scope.comments = [];
+
   $scope.postComment = function() {
     var dts = new Date().getTime();
-    $scope.route.comments.push({
-      uid: uid,
-      comment: $scope.input.comment,
-      username: $scope.username,
-      datetimestamp: dts
-    });
+    $scope.comments.push($scope.input.comment);
     $scope.input.comment = "";
   };
 })

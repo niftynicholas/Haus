@@ -38,19 +38,11 @@
            </div>
            <div class="list">
                <!-- If there is no comment -->
-               <a class="item" href="#" ng-if="route.comments == null">There are no comments yet.</a>
+               <a class="item" href="#" ng-if="comments.length== 0">There are no comments yet.</a>
 
                <!--<a class="item" href="#" ng-repeat="c in route.comments">-->
-               <a class="item item-avatar" href="#" ng-repeat="c in route.comments">
-                   <img src="{{profilePictures[c.uid] || 'img/profile-placeholder.gif'}}">
-                   <h2><b>{{c.username === username && "Me" || c.username}}</b></h2>
-                   <p style="overflow: initial; white-space: initial;">{{c.comment}}
-                       <br>
-                       <div ng-if='c.username === username && "Me"' style="text-align: right;">
-                           <!--<p ng-click="editComment(route.cid, c.datetimestamp)" style="display: inline;"><u>Edit</u></p>-->
-                           <p ng-click="deleteComment(route.cid, c.datetimestamp, c.comment)" style="display: inline;"><u>Delete</u></p>
-                       </div>
-                   </p>
+               <a class="item" ng-repeat="comment in comments">                   
+                   <p style="overflow: initial; white-space: initial;">{{comment}}</p>
                </a>
                <form>
                    <div class="item item-input-inset">
