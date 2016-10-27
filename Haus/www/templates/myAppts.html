@@ -6,12 +6,12 @@
 </ion-header-bar>
 <ion-content>
   <div class="list">
-    <a class="item item-avatar" href="#">
-      <img src="https://media.glassdoor.com/sqll/611812/dbs-bank-squarelogo.png">
-      <h2>Tan Beng Yew</h2>
-      <p>26 October 2016, 2:30 PM</p>
+    <a class="item item-avatar" href="#" ng-repeat="appointment in appointments">
+      <!-- <img src="https://media.glassdoor.com/sqll/611812/dbs-bank-squarelogo.png"> -->
+      <h2>{{branches[appointment.branch-1].branchname}}</h2>
+      <p>{{appointment.datetime | date: "dd MMMM yyyy h:mm a"}}</p>
     </a>
-    <a class="item item-avatar" href="#">
+    <!-- <a class="item item-avatar" href="#">
       <img src="https://tripzilla.sg/files/2278353.jpg">
       <h2>Nicole Lim Ting Ting</h2>
       <p>30 October 2016, 4:00 PM</p>
@@ -20,6 +20,6 @@
       <img src="http://www.bigbang-promotions.com/images/cms/clients-8-1-large.jpg">
       <h2>Chua Seng Huat</h2>
       <p>12 November 2016, 10:00 AM</p>
-    </a>
+    </a> -->
   </div>
 </ion-content>

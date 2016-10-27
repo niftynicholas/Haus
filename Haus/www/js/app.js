@@ -339,6 +339,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   return service;
 })
 
+.factory('myAppointments', function() {
+  var service = {};
+  service.data = false;
+  service.sendData = function(data) {
+    this.data = data;
+  };
+  service.getData = function() {
+    return this.data;
+  };
+  service.clearData = function() {
+    this.data = false;
+  };
+  return service;
+})
+
 .factory('dataShare', function() {
   var service = {};
   service.data = false;
