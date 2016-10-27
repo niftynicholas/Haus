@@ -97,6 +97,7 @@ angular.module('starter.controllers', [])
     });
 
     $scope.appointments = myAppointments.data;
+
     for(var i=0;i<$scope.appointments.length;i++){
         var datetime = new Date($scope.appointments[i].datetime);
         datetime = datetime.getTime();
@@ -580,10 +581,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('reportCtrl', function($scope, $state, $ionicHistory, dataShare) {
+    $scope.tdsr = dataShare.getData();
+    $scope.loanAmount = $scope.tdsr * 0.8;
+    $scope.totalDeposit = $scope.tdsr * 0.2;
     $scope.goBack = function() {
         $ionicHistory.goBack();
     }
-    $scope.tdsr = dataShare.getData();
+
 })
 
 .controller('viewPropertyCtrl', function($scope, $state, $ionicHistory, $ionicModal) {

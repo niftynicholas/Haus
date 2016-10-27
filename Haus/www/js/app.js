@@ -28,6 +28,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   BackandProvider.setAnonymousToken('b109c358-b8fa-49da-adce-6e3ce78569f2');
 })
 
+.filter('bank', function() {
+    return function(input) {
+        return input.split(' ')[0];
+    }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
