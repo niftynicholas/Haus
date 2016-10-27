@@ -70,6 +70,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
   .state('myAppts', {
     url: '/myAppts',
+    cache: 'false',
     templateUrl: 'templates/myAppts.html',
     controller: 'myApptsCtrl'
   })

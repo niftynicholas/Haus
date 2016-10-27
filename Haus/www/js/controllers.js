@@ -85,6 +85,7 @@ angular.module('starter.controllers', [])
     });
 
     $scope.appointments = myAppointments.data;
+
     $scope.goBack = function() {
         $ionicHistory.goBack();
     }
@@ -109,7 +110,6 @@ angular.module('starter.controllers', [])
 
     $scope.confirm = function() {
         $scope.tdsr = ($scope.input.monthlyIncome * 0.6 - $scope.input.totalDebt) * ($scope.input.term * 12) * 0.8 + $scope.input.cpfFunds + $scope.input.cash;
-        //alert($scope.tdsr);
         dataShare.sendData($scope.tdsr);
         $state.go("report");
     }
@@ -623,6 +623,33 @@ angular.module('starter.controllers', [])
 
     $scope.banks = [];
     $scope.branches = [];
+    $scope.times = [
+        {
+            id: 1,
+            time: "10:00 AM"
+        }, {
+            id: 2,
+            time: "11:00 AM"
+        }, {
+            id: 3,
+            time: "11:00 AM"
+        }, {
+            id: 4,
+            time: "1:00 PM"
+        }, {
+            id: 5,
+            time: "2:00 PM"
+        }, {
+            id: 6,
+            time: "3:00 PM"
+        }, {
+            id: 7,
+            time: "4:00 PM"
+        }, {
+            id: 8,
+            time: "5:00 PM"
+        }
+    ];
 
     $scope.selectedBank = "Select a bank";
     $scope.selectedBranch = "Select a branch";
@@ -632,7 +659,8 @@ angular.module('starter.controllers', [])
     $scope.selectedBranchID = 0;
 
     $scope.scheduleAppt = function() {
-
+        console.log($scope.selectedDate);
+        console.log($scope.selectedTime);
         if (document.getElementById("date") != null && document.getElementById("time") != null) {
             var date = document.getElementById("date").innerHTML;
             var time = document.getElementById("time").innerHTML;
@@ -656,7 +684,9 @@ angular.module('starter.controllers', [])
 
             var dateTime = date + " " + time;
             var formattedDate = new Date(dateTime);
-
+            console.log(date);
+            console.log(time);
+            console.log(formattedDate);
             var sentData = {
                 "branch": $scope.selectedBranchID,
                 "user": localStorage.getItem("userID"),
@@ -684,6 +714,14 @@ angular.module('starter.controllers', [])
 
     $scope.hasSelectedBranch = function() {
         if ($scope.selectedBranch == "Select a branch") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    $scope.hasSelectedDate = function() {
+        if ($scope.selectedDate == "Select a date") {
             return false;
         } else {
             return true;
@@ -751,4 +789,21 @@ angular.module('starter.controllers', [])
         $scope.closeBranchModal();
     }
 
+    $ionicModal.fromTemplateUrl('timeModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.timeModal = modal;
+    });
+    $scope.openTimeModal = function() {
+        $scope.timeModal.show();
+    };
+    $scope.closeTimeModal = function() {
+        $scope.timeModal.hide();
+    };
+    $scope.selectTime = function(index) {
+        $scope.selectedTimeID = $scope.times[index].id;
+        $scope.selectedTime= $scope.times[index].time;
+        $scope.closeTimeModal();
+    }
 });
