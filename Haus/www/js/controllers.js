@@ -66,9 +66,21 @@ angular.module('starter.controllers', [])
 
 .controller('profileCtrl', function($scope, $state, dataShare, appointmentDAO, myAppointments) {
     var promise = appointmentDAO.getAppointments();
+    var myAppts = [];
     promise.then(function successCallback(response) {
-        $scope.myAppts = response.data.data;
-        myAppointments.data = response.data.data;
+        var appointments = response.data.data;
+        for(var i=0;i<appointments.length;i++){
+            if(appointments[i].user == localStorage.getItem("userID")){
+                myAppts.push({
+                    branch: appointments[i].branch,
+                    datetime: appointments[i].datetime,
+                    id: appointments[i].id,
+                    user: appointments[i].user
+                });
+            }
+        }
+        $scope.myAppts = myAppts;
+        myAppointments.data = myAppts;
     }, function errorCallback(response) {
         console.log(response);
     });
@@ -85,7 +97,11 @@ angular.module('starter.controllers', [])
     });
 
     $scope.appointments = myAppointments.data;
-
+    for(var i=0;i<$scope.appointments.length;i++){
+        var datetime = new Date($scope.appointments[i].datetime);
+        datetime = datetime.getTime();
+        $scope.appointments[i].datetime = datetime;
+    }
     $scope.goBack = function() {
         $ionicHistory.goBack();
     }
