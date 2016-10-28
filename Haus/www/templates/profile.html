@@ -6,7 +6,7 @@
           <img src="http://www.exaholics.com/wp-content/uploads/avatars/1404/avatar1404-bpthumb.jpg">
         </div>
         <h2 class="profile-name dark">{{username}}</h2>
-        <div class="profile-info">Affordability: $388,888</div>
+        <div class="profile-info">Affordability: ${{affordability | number}}</div>
       </ion-item>
     </ion-list>
     </br>
@@ -16,7 +16,7 @@
         <span class="badge badge-positive">{{myAppts.length}}</span>
       </a>
     </div>
-    <h5 style="padding:5px; text-align:center;"><b>To help us serve you better, please take a few minutes to set up your profile so that we can match you with the best housing loans and properties.</b></h5>
+    <h5 style="padding:5px; text-align:center;"><b>To help us match you with better loans and properties, please take a few minutes to complete the following: </b></h5>
     <button class="button button-block button-positive" ui-sref="setup">
       Set Up
     </button>

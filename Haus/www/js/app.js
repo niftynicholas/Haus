@@ -29,9 +29,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 })
 
 .filter('bank', function() {
-    return function(input) {
-        return input.split(' ')[0];
-    }
+  return function(input) {
+    return input.split(' ')[0];
+  }
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -113,7 +113,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
     url: '/browseLoans',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browseLoans.html'
+        templateUrl: 'templates/browseLoans.html',
+        controller: 'browseLoansCtrl'
       }
     }
   })
