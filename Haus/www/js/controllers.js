@@ -122,15 +122,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('myApptsCtrl', function($scope, $state, $ionicHistory, myAppointments, branchDAO) {
+  $scope.appointments = myAppointments.data;
+
   var promise = branchDAO.getBranches();
   promise.then(function successCallback(response) {
     $scope.branches = response.data.data;
   }, function errorCallback(response) {
     console.log(response);
   });
-
-  $scope.appointments = myAppointments.data;
-
   for (var i = 0; i < $scope.appointments.length; i++) {
     var datetime = new Date($scope.appointments[i].datetime);
     datetime = datetime.getTime();

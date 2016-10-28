@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
 .filter('bank', function() {
   return function(input) {
-    return input.split(' ')[0];
+    return input.split(' ')[0].toLowerCase();
   }
 })
 
