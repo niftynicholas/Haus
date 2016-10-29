@@ -1,11 +1,11 @@
 <ion-header-bar class="bar-positive">
   <div class="buttons">
-    <button class="button button-clear" ng-click="goBack()"><i class="ion-arrow-left-c"></i> Back</button>
+    <button class="button button-clear" ui-sref="app.profile"><i class="ion-arrow-left-c"></i> Back</button>
   </div>
   <h1 class="title">Set Up</h1>
 </ion-header-bar>
 <ion-content>
-  <form ng-submit="submit()">
+  <form>
     <div class="list">
       <!-- Start of List-->
 
@@ -96,6 +96,6 @@
       </div>
     </div>
     <!-- End of List-->
-    <button class="button button-full button-positive" ng-click="confirm()">Confirm</button>
+    <button type="button" class="button button-full button-positive" ng-click="confirm()">Confirm</button>
   </form>
 </ion-content>

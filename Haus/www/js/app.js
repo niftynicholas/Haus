@@ -51,21 +51,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
   .state('login', {
     url: '/login',
-    cache: 'false',
+    cache: false,
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
 
   .state('signup', {
     url: '/signup',
-    cache: 'false',
+    cache: false,
     templateUrl: 'templates/signup.html',
     controller: 'signupCtrl'
   })
 
   .state('app.profile', {
     url: '/profile',
-    cache: 'false',
+    cache: false,
     views: {
       'menuContent': {
         templateUrl: 'templates/profile.html',
@@ -76,13 +76,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
   .state('myAppts', {
     url: '/myAppts',
-    cache: 'false',
+    cache: false,
     templateUrl: 'templates/myAppts.html',
     controller: 'myApptsCtrl'
   })
 
   .state('setup', {
-    cache: 'false',
+    cache: false,
     url: '/setup',
     templateUrl: 'templates/setup.html',
     controller: 'setupCtrl'
@@ -90,20 +90,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
 
   .state('proof', {
     url: '/proof',
-    cache: 'false',
+    cache: false,
     templateUrl: 'templates/proof.html',
     controller: 'proofCtrl'
   })
 
   .state('proof1', {
     url: '/proof1',
-    cache: 'false',
+    cache: false,
     templateUrl: 'templates/proof1.html',
     controller: 'proof1Ctrl'
   })
 
   .state('report', {
-    cache: 'false',
+    cache: false,
     url: '/report',
     templateUrl: 'templates/report.html',
     controller: 'reportCtrl'
@@ -129,7 +129,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'backand', 'ngMessage
   })
 
   .state('viewProperty', {
-    cache: 'false',
+    cache: false,
     url: '/viewProperty',
     templateUrl: 'templates/viewProperty.html',
     controller: 'viewPropertyCtrl'

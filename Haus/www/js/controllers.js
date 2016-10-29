@@ -7,6 +7,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('loginCtrl', function($scope, $state, userDAO, dataShare, $ionicLoading, $ionicPopup) {
+  $ionicLoading.show({
+    template: '<p>Loading...</p><ion-spinner icon="lines" class="spinner-light"></ion-spinner>',
+    duration: 1000
+  }).then(function() {
+
+  });
+
   $scope.show = function() {
     $ionicLoading.show({
       template: '<p>Logging In...</p><ion-spinner icon="lines" class="spinner-light"></ion-spinner>'
@@ -18,23 +25,33 @@ angular.module('starter.controllers', [])
   };
 
   $scope.authorization = {};
-  $scope.login = function() {
-    $scope.show();
-    var promise = userDAO.getUsers();
-    promise.then(function successCallback(response) {
-      var authenticated = false;
-      var users = response.data.data;
-      for (var i = 0; i < users.length; i++) {
-        if (users[i].username.toLowerCase() == $scope.authorization.username.toLowerCase() && users[i].password == $scope.authorization.password) {
-          $scope.hide();
-          localStorage.setItem("username", $scope.authorization.username.toLowerCase());
-          localStorage.setItem("userID", users[i].id);
-          localStorage.setItem("affordability", 0);
-          $state.go('app.profile');
-          authenticated = true;
+  $scope.login = function(form) {
+    if (form.$valid) {
+      $scope.show();
+      var promise = userDAO.getUsers();
+      promise.then(function successCallback(response) {
+        var authenticated = false;
+        var users = response.data.data;
+        for (var i = 0; i < users.length; i++) {
+          if (users[i].username.toLowerCase() == $scope.authorization.username.toLowerCase() && users[i].password == $scope.authorization.password) {
+            $scope.hide();
+            localStorage.setItem("username", $scope.authorization.username.toLowerCase());
+            localStorage.setItem("userID", users[i].id);
+            localStorage.setItem("affordability", 0);
+            $state.go('app.profile');
+            authenticated = true;
+          }
         }
-      }
-      if (!authenticated) {
+        if (!authenticated) {
+          $scope.hide();
+          var alertPopup = $ionicPopup.alert({
+            title: 'Opps!',
+            template: 'You have entered an invalid username/password.'
+          });
+
+          alertPopup.then(function(res) {});
+        }
+      }, function errorCallback(response) {
         $scope.hide();
         var alertPopup = $ionicPopup.alert({
           title: 'Opps!',
@@ -42,24 +59,34 @@ angular.module('starter.controllers', [])
         });
 
         alertPopup.then(function(res) {});
-      }
-    }, function errorCallback(response) {
-      $scope.hide();
-      var alertPopup = $ionicPopup.alert({
-        title: 'Opps!',
-        template: 'You have entered an invalid username/password.'
       });
-
-      alertPopup.then(function(res) {});
-    });
+    }
   }
 })
 
-.controller('signupCtrl', function($scope, $state, $ionicHistory, userDAO) {
+.controller('signupCtrl', function($scope, $state, $ionicHistory, $ionicPopup, $ionicLoading, userDAO) {
+  $ionicLoading.show({
+    template: '<p>Loading...</p><ion-spinner icon="lines" class="spinner-light"></ion-spinner>',
+    duration: 1000
+  }).then(function() {
+
+  });
+
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: '<p>Signing Up...</p><ion-spinner icon="lines" class="spinner-light"></ion-spinner>'
+    });
+  };
+
+  $scope.hide = function() {
+    $ionicLoading.hide();
+  };
+
   $scope.type = "password";
   $scope.input = {
     gender: "Male"
   };
+
   $scope.toggleVisibility = function() {
     if ($scope.type == "password") {
       $scope.type = "text";
@@ -74,23 +101,31 @@ angular.module('starter.controllers', [])
 
   $scope.signup = function(form) {
     if (form.$valid) {
+      $scope.show();
       var promise = userDAO.addUser($scope.input);
       promise.then(function successCallback(response) {
-        console.log(response);
-        $state.go('login');
+        $scope.hide();
+        var alertPopup = $ionicPopup.alert({
+          title: 'Congrats!',
+          template: 'You have signed up for an account successfully. You may proceed to login.'
+        });
+
+        alertPopup.then(function(res) {
+          $state.go('login');
+        });
       }, function errorCallback(response) {
+        $scope.hide();
         //if duplicate email/username
         console.log(response);
         alert("Unable to sign up. Please try again.")
       });
     }
   }
-
 })
 
 .controller('profileCtrl', function($scope, $state, dataShare, appointmentDAO, myAppointments) {
-    $scope.affordability = localStorage.getItem("affordability");
-      $scope.username = localStorage.getItem("username");
+  $scope.affordability = localStorage.getItem("affordability");
+  $scope.username = localStorage.getItem("username");
   var promise = appointmentDAO.getAppointments();
   var myAppts = [];
   promise.then(function successCallback(response) {
@@ -115,13 +150,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('browseLoansCtrl', function($scope, $state, $ionicHistory, myAppointments, branchDAO) {
-    $scope.affordability1 = parseInt(localStorage.getItem("affordability")) + 1000;
-    $scope.affordability2 = parseInt(localStorage.getItem("affordability")) + 1200;
-    $scope.affordability3 = parseInt(localStorage.getItem("affordability")) + 1300;
-    $scope.affordability4 = parseInt(localStorage.getItem("affordability")) + 1500;
+  $scope.affordability1 = parseInt(localStorage.getItem("affordability")) + 1000;
+  $scope.affordability2 = parseInt(localStorage.getItem("affordability")) + 1200;
+  $scope.affordability3 = parseInt(localStorage.getItem("affordability")) + 1300;
+  $scope.affordability4 = parseInt(localStorage.getItem("affordability")) + 1500;
 })
 
-.controller('myApptsCtrl', function($scope, $state, $ionicHistory, myAppointments, branchDAO) {
+.controller('myApptsCtrl', function($scope, $state, $ionicLoading, $ionicHistory, myAppointments, branchDAO) {
+  $ionicLoading.show({
+    template: '<p>Loading...</p><ion-spinner icon="lines" class="spinner-light"></ion-spinner>',
+    duration: 1000
+  }).then(function() {
+
+  });
   $scope.appointments = myAppointments.data;
 
   var promise = branchDAO.getBranches();
@@ -392,7 +433,7 @@ angular.module('starter.controllers', [])
   $scope.showAlert = function() {
     var alertPopup = $ionicPopup.alert({
       title: 'Proof of Identity Uploaded!',
-      template: 'Your account will be verified within 3 working days.'
+      template: 'Your identity will be verified within 3 working days. Then, evaluation will be performed by the participating banks which allows us to provide you with more accurate loan products. Thank you.'
     });
 
     alertPopup.then(function(res) {
@@ -747,7 +788,7 @@ angular.module('starter.controllers', [])
       var promise = appointmentDAO.addAppointment(sentData);
       var alertPopup = $ionicPopup.alert({
         title: 'Appointment Confirmed!',
-        template: 'You may view your appointments under My Appointments.'
+        template: 'You may now view your appointments under Profile > My Appointments.'
       });
       alertPopup.then(function(res) {
         $state.go("app.profile");

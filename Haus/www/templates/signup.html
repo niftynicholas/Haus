@@ -9,25 +9,25 @@
     <div class="list">
       <!-- Email -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.email.$invalid && signupForm.$submitted, 'no-errors' : signupForm.email.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Email</span>
-                    <input type="email" name="email" ng-model="input.email" required>
-                </label>
+        <span class="input-label">Email</span>
+        <input type="email" id="email" name="email" ng-model="input.email" email required>
+      </label>
       <div class="error-container" ng-show="signupForm.email.$error && signupForm.$submitted" ng-messages="signupForm.email.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
       <!-- Username -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.username.$invalid && signupForm.$submitted, 'no-errors' : signupForm.username.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Username</span>
-                    <input type="text" name="username" ng-model="input.username" ng-minlength="8" ng-maxlength="15" required>
-                </label>
+        <span class="input-label">Username</span>
+        <input type="text" name="username" ng-model="input.username" ng-minlength="8" ng-maxlength="15" required>
+      </label>
       <div class="error-container" ng-show="signupForm.username.$error && signupForm.$submitted" ng-messages="signupForm.username.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
       <!-- Password -->
       <label class="item item-input item-icon-right" ng-class="{ 'has-errors' : signupForm.password.$invalid && signupForm.$submitted, 'no-errors' : signupForm.password.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Password</span><i class="icon ion-eye" on-touch="toggleVisibility()"></i>
-                    <input type="{{type}}" name="password" id="password" ng-model="input.password" required password-strength>
-                </label>
+        <span class="input-label">Password</span><i class="icon ion-eye" on-touch="toggleVisibility()"></i>
+        <input type="{{type}}" name="password" id="password" ng-model="input.password" required password-strength>
+      </label>
       <div class="error-container" ng-show="signupForm.password.$error && signupForm.$submitted" ng-messages="signupForm.password.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
@@ -35,45 +35,45 @@
     <div class="list">
       <!-- NRIC -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.nric.$invalid && signupForm.$submitted, 'no-errors' : signupForm.nric.$valid  && signupForm.$submitted}">
-                    <span class="input-label">NRIC</span>
-                    <input type="text" name="nric" ng-model="input.nric" required>
-                </label>
+        <span class="input-label">NRIC</span>
+        <input type="text" name="nric" ng-model="input.nric" required>
+      </label>
       <div class="error-container" ng-show="signupForm.nric.$error && signupForm.$submitted" ng-messages="signupForm.nric.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
       <!-- Name -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.name.$invalid && signupForm.$submitted, 'no-errors' : signupForm.name.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Name</span>
-                    <input type="text" name="name" ng-model="input.name" required>
-                </label>
+        <span class="input-label">Name</span>
+        <input type="text" name="name" ng-model="input.name" required>
+      </label>
       <div class="error-container" ng-show="signupForm.name.$error && signupForm.$submitted" ng-messages="signupForm.name.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
 
       <!-- Gender -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.gender.$invalid && signupForm.$submitted, 'no-errors' : signupForm.gender.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Gender</span>
-                    <select name="gender" ng-model="input.gender" required>
-                        <option value="Male" selected>Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </label>
+        <span class="input-label">Gender</span>
+        <select name="gender" ng-model="input.gender" required>
+          <option value="Male" selected>Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </label>
       <div class="error-container" ng-show="signupForm.gender.$error && signupForm.$submitted" ng-messages="signupForm.gender.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
       <!-- Birth Date -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.birthDate.$invalid && signupForm.$submitted, 'no-errors' : signupForm.birthDate.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Birth Date</span>
-                    <input type="date" name="birthDate" ng-model="input.birthDate" required>
-                </label>
+        <span class="input-label">Birth Date</span>
+        <input type="date" name="birthDate" ng-model="input.birthDate" required>
+      </label>
       <div class="error-container" ng-show="signupForm.birthDate.$error && signupForm.$submitted" ng-messages="signupForm.birthDate.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
       <!-- Mobile No. -->
       <label class="item item-input" ng-class="{ 'has-errors' : signupForm.mobileNo.$invalid && signupForm.$submitted, 'no-errors' : signupForm.mobileNo.$valid  && signupForm.$submitted}">
-                    <span class="input-label">Mobile No.</span>
-                    <input type="tel" name="mobileNo" ng-model="input.mobileNo" required>
-                </label>
+        <span class="input-label">Mobile No.</span>
+        <input type="tel" name="mobileNo" ng-model="input.mobileNo" required>
+      </label>
       <div class="error-container" ng-show="signupForm.mobileNo.$error && signupForm.$submitted" ng-messages="signupForm.mobileNo.$error">
         <div ng-messages-include="error-list.html"></div>
       </div>
