@@ -6,7 +6,7 @@
 </ion-header-bar>
 <ion-content>
   <div class="list">
-    <a class="item item-avatar" href="#" ng-repeat="appointment in appointments">
+    <a class="item item-avatar" ng-repeat="appointment in appointments">
       <img ng-src="./img/{{branches[appointment.branch-2].branchname | bank}}.png">
       <h2>{{branches[appointment.branch-2].branchname}}</h2>
       <p>{{appointment.datetime | date: "dd MMMM yyyy hh:mm a"}}</p>
